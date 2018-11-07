@@ -1,0 +1,16 @@
+CACHE MANIFEST
+/index.html
+/etz.css
+/keymaster.min.js
+/etz.js
+/data.js
+/startup.png
+/startup-retina.png
+/startup-ipad-landscape.png
+/startup-ipad-portrait.png
+/etz-512.png
+
+NETWORK:
+*
+
+#20181104
