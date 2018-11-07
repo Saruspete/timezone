@@ -1,6 +1,6 @@
 (function() {
 	var getById, s, isAndroid, t, e, p, d, h, domBody, g, c, n, domCanvas, isChrome, v, canvasContext, l, w, b, u, x, C, y, T, L, M, setInnerHtml,
-	isIE, F, k, O, z, N, _, arrMonths, E, isGecko, G, isOpera, H, devPixelRatio, B, R, redraw, V, Y, J, X, W, K, Z, j, Q, $, tt, supportsTouch, nt, ot, rt, at, it, lt, ct, ut, st, dt, loadCities, pt, ht, gt, vt, mt, wt, isWebkit, xt;
+	isIE, F, k, O, z, N, _, arrMonths, E, isGecko, G, isOpera, H, devPixelRatio, B, R, redraw, V, Y, J, X, W, K, Z, j, Q, init, tt, supportsTouch, nt, ot, rt, at, it, lt, ct, ut, st, dt, loadCities, pt, ht, gt, vt, mt, wt, isWebkit, xt;
 	v = [],
 	G = 0,
 	loadCities = function(t) {
@@ -117,12 +117,17 @@
 	j = function(t, e, n) {
 		return t.setAttribute("width", e * devPixelRatio), t.setAttribute("height", n * devPixelRatio), l(t, "height:" + n + "px; width:" + e + "px")
 	},
-	$ = function() {
+	
+	init = function() {
 		var t, e, n;
 		return e = function() {
 				var t, e, n, a, o, r;
-				for (a = getById("select_timezones"), t = -1, o = 0, r = data.length; o < r; o++)
-					n = (e = data[o])[1], "" !== e[2] && (n += " " + e[2]), a.appendChild(new Option(n, t += 1, false, e[3]));
+				a = getById("select_timezones"), 
+				t = -1, 
+				r = data.length;
+				for (o = 0; o < r; o++)
+					n = (e = data[o])[1], "" !== e[2] && (n += " " + e[2]),
+					a.appendChild(new Option(n, t += 1, false, e[3]));
 				return a.onchange = function() {
 					var e, n, t, o, r;
 					for (t = function(t) {return a.options[e].selected && (n += 1 << e), e += 1}, o = n = e = 0, r = data.length; o < r; o++)
@@ -130,26 +135,26 @@
 					return loadCities(n), redraw(), wt()
 				}
 			},
-	n = function(t) {
+			n = function(t) {
 				return document.adoptNode((new DOMParser).parseFromString(t, "text/xml").firstChild)
 			},
-	t = function(t) {
+			t = function(t) {
 				return '<svg class="action" width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">\n		<path fill="#FFFFFF" d="M23.077,10.154h-1.106c-0.508,0-1.047-0.397-1.198-0.883l-0.636-1.545c-0.239-0.447-0.141-1.107,0.216-1.467\nl0.788-0.785c0.359-0.359,0.359-0.947,0-1.307l-1.309-1.305c-0.358-0.359-0.945-0.359-1.305,0l-0.788,0.785\nc-0.356,0.358-1.019,0.457-1.467,0.217l-1.543-0.637c-0.483-0.149-0.881-0.688-0.881-1.197V0.924C13.849,0.417,13.432,0,12.924,0\nh-1.847c-0.508,0-0.924,0.417-0.924,0.924v1.107c0,0.509-0.396,1.048-0.881,1.197L7.728,3.865c-0.449,0.24-1.106,0.143-1.466-0.217\nL5.474,2.863c-0.359-0.359-0.945-0.359-1.304,0L2.864,4.168c-0.36,0.359-0.36,0.947,0,1.307L3.647,6.26\nc0.36,0.359,0.459,1.02,0.217,1.467L3.229,9.273c-0.152,0.484-0.688,0.881-1.197,0.881H0.924C0.416,10.154,0,10.568,0,11.077v1.846\nc0,0.509,0.416,0.925,0.924,0.925h1.108c0.509,0,1.045,0.396,1.195,0.881l0.637,1.547c0.241,0.447,0.144,1.109-0.217,1.467\nl-0.785,0.785c-0.358,0.359-0.358,0.947,0,1.307l1.308,1.307c0.358,0.357,0.944,0.357,1.304,0l0.788-0.787\nc0.357-0.357,1.017-0.455,1.462-0.213l1.549,0.635c0.485,0.152,0.881,0.689,0.881,1.197v1.105c0,0.506,0.416,0.922,0.924,0.922\nh1.847c0.508,0,0.925-0.416,0.925-0.922v-1.105c0-0.508,0.397-1.045,0.881-1.197l1.548-0.635c0.446-0.242,1.107-0.145,1.467,0.213\nl0.783,0.787c0.359,0.357,0.946,0.357,1.305,0l1.309-1.307c0.359-0.359,0.359-0.947,0-1.307l-0.788-0.785\nc-0.356-0.357-0.455-1.02-0.216-1.467l0.636-1.547c0.151-0.484,0.693-0.881,1.198-0.881h1.106c0.509,0,0.923-0.414,0.923-0.923\nv-1.848C24,10.568,23.586,10.154,23.077,10.154 M16.619,11.999c0,2.55-2.066,4.614-4.615,4.614c-2.552,0-4.617-2.064-4.617-4.614\nc0-2.549,2.065-4.615,4.617-4.615C14.553,7.384,16.619,9.45,16.619,11.999"/>\n      </svg>', t.appendChild(n('      <svg class="action" width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">\n        <path fill="#FFFFFF" d="M23.077,10.154h-1.106c-0.508,0-1.047-0.397-1.198-0.883l-0.636-1.545c-0.239-0.447-0.141-1.107,0.216-1.467\nl0.788-0.785c0.359-0.359,0.359-0.947,0-1.307l-1.309-1.305c-0.358-0.359-0.945-0.359-1.305,0l-0.788,0.785\nc-0.356,0.358-1.019,0.457-1.467,0.217l-1.543-0.637c-0.483-0.149-0.881-0.688-0.881-1.197V0.924C13.849,0.417,13.432,0,12.924,0\nh-1.847c-0.508,0-0.924,0.417-0.924,0.924v1.107c0,0.509-0.396,1.048-0.881,1.197L7.728,3.865c-0.449,0.24-1.106,0.143-1.466-0.217\nL5.474,2.863c-0.359-0.359-0.945-0.359-1.304,0L2.864,4.168c-0.36,0.359-0.36,0.947,0,1.307L3.647,6.26\nc0.36,0.359,0.459,1.02,0.217,1.467L3.229,9.273c-0.152,0.484-0.688,0.881-1.197,0.881H0.924C0.416,10.154,0,10.568,0,11.077v1.846\nc0,0.509,0.416,0.925,0.924,0.925h1.108c0.509,0,1.045,0.396,1.195,0.881l0.637,1.547c0.241,0.447,0.144,1.109-0.217,1.467\nl-0.785,0.785c-0.358,0.359-0.358,0.947,0,1.307l1.308,1.307c0.358,0.357,0.944,0.357,1.304,0l0.788-0.787\nc0.357-0.357,1.017-0.455,1.462-0.213l1.549,0.635c0.485,0.152,0.881,0.689,0.881,1.197v1.105c0,0.506,0.416,0.922,0.924,0.922\nh1.847c0.508,0,0.925-0.416,0.925-0.922v-1.105c0-0.508,0.397-1.045,0.881-1.197l1.548-0.635c0.446-0.242,1.107-0.145,1.467,0.213\nl0.783,0.787c0.359,0.357,0.946,0.357,1.305,0l1.309-1.307c0.359-0.359,0.359-0.947,0-1.307l-0.788-0.785\nc-0.356-0.357-0.455-1.02-0.216-1.467l0.636-1.547c0.151-0.484,0.693-0.881,1.198-0.881h1.106c0.509,0,0.923-0.414,0.923-0.923\nv-1.848C24,10.568,23.586,10.154,23.077,10.154 M16.619,11.999c0,2.55-2.066,4.614-4.615,4.614c-2.552,0-4.617-2.064-4.617-4.614\nc0-2.549,2.065-4.615,4.617-4.615C14.553,7.384,16.619,9.45,16.619,11.999"/>\n      </svg>'))
-	},
+			},
 
-	// Generates an engine icon
-	function(t) {
-		return '  <svg class="action" width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg">\n<g><path d="M12,3.5L8,0v2.25c0,0-5,0.75-5,5C4.5,5,8,4.75,8,4.75V7L12,3.5z"/></g>\n<g><polygon points="10,7 9,8 9,9 1,9 1,3 3.5,3 4.5,2 0,2 0,10 10,10"/></g>\n</svg>', t.appendChild(n('  <svg class="action" width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg">\n<g><path d="M12,3.5L8,0v2.25c0,0-5,0.75-5,5C4.5,5,8,4.75,8,4.75V7L12,3.5z"/></g>\n<g><polygon points="10,7 9,8 9,9 1,9 1,3 3.5,3 4.5,2 0,2 0,10 10,10"/></g>\n</svg>'))
-	}(getById("action_icon")),
-	t(getById("edit_icon")),
-	navigator.standalone && (domBody.className += " standalone"),
-	e(),
-	supportsTouch 
-		? (
-			setInnerHtml("shortcut_link", "tap &amp; hold to share") //,
-			//isAndroid ? getById("tap_to_add").style.display = "none" : void 0
-		) 
-		: setInnerHtml("shortcut_link", "link to this page")
+			// Generates an engine icon
+			function(t) {
+				return '  <svg class="action" width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg">\n<g><path d="M12,3.5L8,0v2.25c0,0-5,0.75-5,5C4.5,5,8,4.75,8,4.75V7L12,3.5z"/></g>\n<g><polygon points="10,7 9,8 9,9 1,9 1,3 3.5,3 4.5,2 0,2 0,10 10,10"/></g>\n</svg>', t.appendChild(n('  <svg class="action" width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg">\n<g><path d="M12,3.5L8,0v2.25c0,0-5,0.75-5,5C4.5,5,8,4.75,8,4.75V7L12,3.5z"/></g>\n<g><polygon points="10,7 9,8 9,9 1,9 1,3 3.5,3 4.5,2 0,2 0,10 10,10"/></g>\n</svg>'))
+			}(getById("action_icon")),
+			t(getById("edit_icon")),
+			navigator.standalone && (domBody.className += " standalone"),
+			e(),
+			supportsTouch 
+				? (
+					setInnerHtml("shortcut_link", "tap &amp; hold to share") //,
+					//isAndroid ? getById("tap_to_add").style.display = "none" : void 0
+				) 
+				: setInnerHtml("shortcut_link", "link to this page")
 	},
 
 	tt = function() {
@@ -171,8 +176,8 @@
 				[.9099, "#575b5c"],
 				[.91, "#4b4c4d"],
 				[1, "#4b4c4d"]
-			]).length; e < r; e++)
-				t = l[e], b.addColorStop(t[0], t[1]);
+		]).length; e < r; e++)
+			t = l[e], b.addColorStop(t[0], t[1]);
 
 		for (a = (c = [
 				[n = 0, "#5485b1"],
@@ -206,7 +211,7 @@
 				rt.addColorStop(.025, "rgba(255,255,255,0)"),
 				g.addColorStop(0, "rgba(255,255,255,0.3)"),
 				g.addColorStop(.025, "rgba(255,255,255,0)")
-	},
+		},
 	Y = function(t, e, n, o) {
 		return null == o && (o = canvasContext), 
 			o.beginPath(),
@@ -380,7 +385,7 @@
 		if (!F) return vt(), loadCities(H.cities), G = H.offset, Q(), mt(), ht(true), redraw();
 		F = false
 	},
-	$(),
+	init(),
 	Q(),
 	redraw(),
 	pt(true),
